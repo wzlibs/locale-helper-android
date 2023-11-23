@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Locale
 
-open class LocaleAwareCompatActivity : AppCompatActivity() {
+abstract class LocaleAwareCompatActivity : AppCompatActivity() {
     private val localeDelegate: LocaleHelperActivityDelegate = LocaleHelperActivityDelegateImpl()
 
     override fun getDelegate() = localeDelegate.getAppCompatDelegate(super.getDelegate())
@@ -44,7 +44,7 @@ open class LocaleAwareCompatActivity : AppCompatActivity() {
     }
 }
 
-open class LocaleAwareApplication : Application() {
+abstract class LocaleAwareApplication : Application() {
     private val localeAppDelegate = LocaleHelperApplicationDelegate()
 
     override fun attachBaseContext(base: Context) {
